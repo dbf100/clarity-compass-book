@@ -1,0 +1,4 @@
+# Optional. Only needed if you want SEMANTIC (meaning-based) search.
+# Keyword search works with zero installs (Python's built-in sqlite3 + FTS5).
+sentence-transformers>=2.2.0
+sqlite-vec>=0.1.1

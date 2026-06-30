@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local search index (rebuildable from the book)
+tools/*.db
+tools/*.sqlite
+
+# OS noise
+.DS_Store
