@@ -1,4 +1,5 @@
-# Optional. Only needed if you want SEMANTIC (meaning-based) search.
+# Optional. Only needed for SEMANTIC (meaning-based) search.
 # Keyword search works with zero installs (Python's built-in sqlite3 + FTS5).
-sentence-transformers>=2.2.0
+# model2vec is a small, fast, local embedding model with no heavy deps (no torch).
+model2vec>=0.3.0
 sqlite-vec>=0.1.1

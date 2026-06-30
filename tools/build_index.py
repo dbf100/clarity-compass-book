@@ -2,19 +2,18 @@
 """
 Build a local search index over the book.
 
-Optional. Dad never needs this. It gives you (Brody) fast keyword AND semantic
-search over the manuscript locally, without uploading anything.
-
+Two tiers, both optional to install:
 - Keyword search (SQLite FTS5) always works, zero extra dependencies.
-- Semantic search additionally turns on IF `sentence-transformers` and
-  `sqlite-vec` are installed (see requirements.txt). If they're not, the script
-  still builds the keyword index and just skips the vector part.
+- Semantic search (find by meaning) turns on IF `model2vec` and `sqlite-vec` are
+  installed (setup.sh tries to install them). model2vec is a small, fast, local
+  embedding model with no heavy deps. If it isn't available, this script still
+  builds the keyword index and just skips the vector part.
 
 Usage:
-    python3 build_index.py              # indexes ../book/*.md into clarity.db
+    python3 build_index.py
     python3 build_index.py --book ../book --db clarity.db
 """
-import argparse, re, sqlite3, sys
+import argparse, re, sqlite3, struct, sys
 from pathlib import Path
 
 def chunk_markdown(text, source):
@@ -46,7 +45,7 @@ def main():
     for f in files:
         for head, body in chunk_markdown(f.read_text(encoding="utf-8"), f.stem):
             rows.append((f.name, head, body))
-    print(f"{len(files)} chapters -> {len(rows)} chunks")
+    print(f"{len(files)} chapters -> {len(rows)} searchable sections")
 
     db = sqlite3.connect(args.db)
     db.execute("DROP TABLE IF EXISTS chunks")
@@ -57,34 +56,33 @@ def main():
         cur = db.execute("INSERT INTO chunks(source, heading, body) VALUES (?,?,?)", (src, head, body))
         db.execute("INSERT INTO chunks_fts(rowid, heading, body) VALUES (?,?,?)", (cur.lastrowid, head, body))
     db.commit()
-    print("Keyword index (FTS5) built.")
+    print("Keyword search ready.")
 
     # Optional semantic layer
     try:
         import sqlite_vec
-        from sentence_transformers import SentenceTransformer
+        from model2vec import StaticModel
     except ImportError:
-        print("Semantic search skipped (install sentence-transformers + sqlite-vec to enable). "
-              "Keyword search is ready.")
+        print("Meaning-based search not installed (that's fine). Keyword + graph search work.")
         db.close()
         return
 
-    print("Building semantic (vector) index. First run downloads a small model.")
-    model = SentenceTransformer("all-MiniLM-L6-v2")
+    print("Building meaning-based search (first run downloads a small model)...")
+    model = StaticModel.from_pretrained("minishlab/potion-base-8M")
+    ids = [r[0] for r in db.execute("SELECT id FROM chunks ORDER BY id").fetchall()]
+    bodies = [r[0] for r in db.execute("SELECT body FROM chunks ORDER BY id").fetchall()]
+    embs = model.encode(bodies)
+    dim = len(embs[0])
     db.enable_load_extension(True)
     sqlite_vec.load(db)
     db.execute("DROP TABLE IF EXISTS vec_chunks")
-    db.execute("CREATE VIRTUAL TABLE vec_chunks USING vec0(id INTEGER PRIMARY KEY, embedding FLOAT[384])")
-    ids = [r[0] for r in db.execute("SELECT id FROM chunks").fetchall()]
-    bodies = [r[0] for r in db.execute("SELECT body FROM chunks ORDER BY id").fetchall()]
-    embs = model.encode(bodies, normalize_embeddings=True, show_progress_bar=True)
-    import struct
+    db.execute(f"CREATE VIRTUAL TABLE vec_chunks USING vec0(id INTEGER PRIMARY KEY, embedding FLOAT[{dim}])")
     for cid, emb in zip(ids, embs):
         db.execute("INSERT INTO vec_chunks(id, embedding) VALUES (?, ?)",
-                   (cid, struct.pack(f"{len(emb)}f", *emb)))
+                   (cid, struct.pack(f"{dim}f", *[float(x) for x in emb])))
     db.commit()
     db.close()
-    print("Semantic index built. Run: python3 search.py \"your question\"")
+    print("Meaning-based search ready.")
 
 if __name__ == "__main__":
     main()
