@@ -64,6 +64,29 @@ Or use these simple commands:
 | `/save` | Saves a snapshot of your work (see below) |
 | `/update` | Pulls my latest version of the book and refreshes search |
 
+## Your panel of book editors (your writing tools)
+
+You have a team of five expert editors on call, like having five pros read your book for you. Bring
+in whichever fits what you need. In Claude Code you summon one by typing **`/editor`** and its name,
+or run the whole panel with **`/board`**. You can also just say it in plain English ("have the reader
+editor look at chapter two").
+
+| The editor | What it does | Reach for it when... | Type |
+|---|---|---|---|
+| **Developmental** | The whole book: big argument, what's missing, what to cut | You want to know if the book as a whole is working, or you finished a big round of writing | `/editor developmental` |
+| **Structural** | Pressure-tests the compass framework | You wonder if the directions overlap or have gaps, or North vs. Magnetic North is confusing | `/editor structural` |
+| **Narrative** | Your stories and examples | A chapter feels flat, a story runs long, or a section needs a story | `/editor narrative` |
+| **Line** | Sharpens sentences, keeps your voice | The ideas are solid but the writing feels clunky | `/editor line` |
+| **Reader** | Reads it as a busy entrepreneur | You want to know where a reader leans in, where they'd stop, or if the teaser reveals too much | `/editor reader` |
+| **All five + consensus** | The whole panel at once | A periodic gut-check on what matters most next | `/board` |
+
+Every editor is told to be brutally honest, the way you asked. They protect what's working and tell
+you straight what isn't.
+
+**For the very end only:** `/polish` is the final cleanup pass (typos, grammar, making it read
+publish-ready). Claude will double-check the book is basically done before running it, because
+polishing writing you'll still change is wasted effort.
+
 ## Saving a snapshot (optional, but handy)
 
 Now and then, after you've made some good edits, Claude may offer to "save a snapshot." You can also

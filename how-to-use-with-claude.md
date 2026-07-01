@@ -55,28 +55,37 @@ one you're looking at.
 
 ---
 
-## The best part: your own panel of book editors
+## Your panel of book editors (think of them as tools)
 
-In the **`editorial-board`** folder there are five expert "editors" you can summon any time.
-Each one is a specialist. To use one:
+In the **`editorial-board`** folder you have a team of expert editors on call. Each one is a
+different specialist, like having five pros read your book for you. You bring in whichever one fits
+what you need that day.
 
-1. Open the file you want (for example `developmental-editor.md`).
+**How to bring one in:**
+1. Open the editor's file (for example `developmental-editor.md`).
 2. Copy everything below the line.
 3. Paste it into a chat inside your Project.
 4. Claude becomes that editor and reviews your book.
 
-The five editors:
-- **developmental-editor**: the big picture. Is the whole book working?
-- **structural-architect**: does the compass framework hold up?
-- **narrative-editor**: are your stories landing?
-- **line-editor**: sharper sentences, your voice.
-- **reader-advocate**: what a real entrepreneur thinks while reading it.
+**Which editor, and when to reach for it:**
 
-Want all five at once? Use **`run-the-board.md`**. It runs the whole panel and then gives you
-the consensus on the most important changes.
+| The editor | What it does | Reach for it when... |
+|---|---|---|
+| **Developmental editor** | Looks at the whole book: the big argument, what's missing, what to cut | You want to know if the book as a whole is working, or you just finished a big round of writing |
+| **Structural architect** | Pressure-tests the compass framework itself | You're wondering if the five directions overlap or have gaps, or if North vs. Magnetic North is confusing |
+| **Narrative editor** | Checks your stories and examples | A chapter feels flat, a story feels too long, or a section needs a story and you're not sure where |
+| **Line editor** | Sharpens the actual sentences, keeps your voice | The ideas are solid but the writing feels clunky, and you want it tighter |
+| **Reader advocate** | Reads it as a busy entrepreneur would | You want to know where a real reader leans in, where they'd put it down, or if the teaser gives too much away |
 
-Every editor is told to be brutally honest, the way you asked. They will protect what's working
-and tell you straight what isn't.
+**Want all five at once?** Open **`run-the-board.md`**, copy it in, and Claude runs the whole panel
+and then tells you the most important changes they all agree on. Great for a periodic gut-check.
+
+Every editor is told to be brutally honest, the way you asked. They protect what's working and tell
+you straight what isn't.
+
+**One more, for the very end:** there's a sixth file, `_FINAL-publish-polish.md`. That is the final
+cleanup pass (typos, grammar, making it read publish-ready). Save it for when the book is basically
+done. Polishing writing you're still going to change is wasted effort, so don't run it early.
 
 ---
 
