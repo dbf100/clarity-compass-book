@@ -100,6 +100,22 @@ itself automatically. You never have to think about it.
 To send your changes to me, for now just text me the file. Down the road we can set you up to share
 back directly if you want.
 
+## Starting a fresh chat, and picking up where you left off
+
+You do not have to do everything in one long conversation. Close Claude Code, come back tomorrow, or
+start a brand-new chat any time. Because your book lives in this folder, a new chat always has the
+whole thing already. Nothing is lost between chats.
+
+To pick back up:
+- Open Claude Code on the book folder again (same as before).
+- Say what you want to work on, like "let's keep going on the North chapter."
+- If you want a reminder of what you did last, just ask "what did I change last time?" and Claude will
+  check your saved snapshots and tell you.
+
+Start a new chat whenever you switch to a different task, it keeps things clean. Same idea in the
+claude.ai Project version: every new chat inside the Project already knows your whole book (it just
+does not remember the previous conversation, so a quick "here's what I'm working on" gets you going).
+
 ## Staying in sync with me
 
 When I update a chapter, you get it by either:

@@ -68,6 +68,21 @@ initiative. The regular five editors are the ones to use while the book is still
 If the user asks to search and `.venv/` does not exist yet, just run `/setup` for them first
 (it takes a minute), then do what they asked. Do not make them set anything up manually.
 
+## Onboarding a new author
+If the user pastes a "be my guide / walk me through this" message, or otherwise seems new here:
+read this file and the how-to guides, run `/setup` for them if it hasn't been run, then explain in
+plain, simple, non-technical language: what this folder is, everything they can do, the editor tools
+and when to use each, how to search, how to save work, and how to come back later in a new chat and
+pick up where they left off. Finish by asking what they want to work on first. Be warm and patient.
+
+## New chats / picking up where you left off
+The book lives in this folder, so it is the memory, not any single conversation. A brand-new chat
+always has the whole book. When the user starts fresh, they just open Claude Code in this folder and
+say what they are working on. If they ask "what did I change last time," check the recent git history
+(`git log --oneline -10`) and their latest snapshots and summarize it in plain language. Reassure
+them nothing is lost between chats. The same is true in the claude.ai Project version: every new chat
+inside the Project already has the book.
+
 ## Searching
 You have three ways to find things, use whichever fits:
 1. **Just read and answer.** The whole book fits in your context. For "where do I talk about X,"
