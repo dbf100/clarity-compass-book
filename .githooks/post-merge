@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Auto-refresh the search index after pulling updates (/update or GitHub Desktop pull).
+cd "$(git rev-parse --show-toplevel)" || exit 0
+if [ -x .venv/bin/python ]; then PY=.venv/bin/python; else PY=python3; fi
+echo "[clarity] got the latest book, refreshing search..."
+"$PY" tools/build_index.py >/dev/null 2>&1 && echo "[clarity] search is up to date." || true
+exit 0

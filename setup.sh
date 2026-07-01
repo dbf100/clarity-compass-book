@@ -28,7 +28,13 @@ echo "  - installing the knowledge-graph search (graphify)..."
 echo "  - (optional) installing meaning-based search..."
 "$VPY" -m pip install -q sqlite-vec model2vec >/dev/null 2>&1 || echo "    (skipped the optional semantic layer. Keyword + graph search still work great.)"
 
-# 5. Build the keyword search index over the book (uses Python's built-in database, no extra deps)
+# 5. Turn on auto-refresh: rebuild the search index automatically on every save/pull
+if [ -d .git ]; then
+  echo "  - turning on auto-refresh of search..."
+  git config core.hooksPath .githooks 2>/dev/null || true
+fi
+
+# 6. Build the keyword search index over the book (uses Python's built-in database, no extra deps)
 echo "  - building the search index over your book..."
 "$VPY" tools/build_index.py || echo "    (index build hiccup. You can still ask Claude to read and search the book directly.)"
 

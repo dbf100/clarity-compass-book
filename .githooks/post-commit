@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Auto-refresh the search index whenever the book changes (runs after every save/commit).
+# Non-fatal: never blocks a commit.
+cd "$(git rev-parse --show-toplevel)" || exit 0
+if git diff-tree --no-commit-id --name-only -r HEAD 2>/dev/null | grep -q '^book/'; then
+  if [ -x .venv/bin/python ]; then PY=.venv/bin/python; else PY=python3; fi
+  echo "[clarity] book changed, refreshing search index..."
+  "$PY" tools/build_index.py >/dev/null 2>&1 && echo "[clarity] search is up to date." || true
+  echo "[clarity] note: to refresh the concept graph too, ask Claude to 'update the graph'."
+fi
+exit 0

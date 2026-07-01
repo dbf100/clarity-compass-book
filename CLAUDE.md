@@ -38,7 +38,31 @@ You have the entire book available. When asked about a topic, read across all ch
 - `/editor <name>` — run one editor: developmental, structural, narrative, line, or reader.
 - `/find <words>` — fast keyword search of the book.
 - `/graph <question>` — answer using the knowledge graph (shows how ideas connect, with chapters).
+- `/save` — save a snapshot of the current work (a commit), explained in plain language.
 - `/update` — pull Brody's latest version of the book and rebuild the search index.
+- `/polish` — the FINAL publish-ready cleanup pass. Gated: confirm the book is content-complete
+  before running it (see below).
+
+## Search and the graph stay fresh automatically
+When the book changes (an edit committed, or an update pulled), the keyword and meaning-based
+search rebuild themselves automatically via a git hook. You do not need to rebuild them by hand.
+The knowledge graph (`/graph`) is the one exception: refreshing it needs an AI pass over the text,
+so after a round of substantial content changes, OFFER to refresh the concept graph (run the
+graphify update). It also ships current and refreshes for the user whenever they pull.
+
+## Saving work (committing), for a non-technical author
+After the user makes a meaningful round of edits, gently offer to save a snapshot: "Want me to save
+a snapshot of this so you can always come back to it?" If they say yes, run `/save` for them. Explain
+a commit in plain terms only if they seem unsure: it is like hitting save with a label, so they can
+look back or undo later, and it stays on their own computer. Keep this light and optional, an offer,
+never a nag, and never more than once per meaningful chunk of work. Do the git steps for them; never
+make them type git commands.
+
+## The final polish pass is gated
+`/polish` (and `editorial-board/_FINAL-publish-polish.md`) is the LAST pass, for when the writing is
+essentially done. If the user asks for it, first confirm the book is content-complete, because
+polishing text that will still be rewritten is wasted work. Do not run it early on your own
+initiative. The regular five editors are the ones to use while the book is still taking shape.
 
 ## First-run check
 If the user asks to search and `.venv/` does not exist yet, just run `/setup` for them first

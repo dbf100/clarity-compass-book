@@ -12,6 +12,7 @@ editor and reviews the manuscript.
 | `line-editor.md` | Sentences: voice, tightening, clarity, clichés | You want sharper prose without losing your voice |
 | `reader-advocate.md` | The target reader's honest reaction | You want to know where a real founder bails |
 | `run-the-board.md` | All five at once, plus a consensus | You want the full review in one pass |
+| `_FINAL-publish-polish.md` | ⚠️ Gated final pass: typos, grammar, AI-slop, consistency | ONLY when the book is content-complete and ready to be made publish-ready. Not part of the board. |
 
 Every editor is instructed to be brutally honest and specific, to quote the manuscript, and to
 protect what's working before naming what isn't. They all honor the house style: no em-dashes,

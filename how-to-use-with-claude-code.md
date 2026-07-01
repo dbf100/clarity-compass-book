@@ -61,7 +61,21 @@ Or use these simple commands:
 | `/graph what pulls you off course` | Shows how the ideas connect, with chapters |
 | `/board` | Runs your full panel of five editors + their consensus |
 | `/editor reader` | Runs just one editor (developmental, structural, narrative, line, or reader) |
+| `/save` | Saves a snapshot of your work (see below) |
 | `/update` | Pulls my latest version of the book and refreshes search |
+
+## Saving a snapshot (optional, but handy)
+
+Now and then, after you've made some good edits, Claude may offer to "save a snapshot." You can also
+just say **`/save`**. A snapshot is like hitting save with a label on it: it records the book exactly
+as it is right now, so you can always look back or undo to that point later. It stays on your own
+computer. You never have to type anything technical. Claude does it for you.
+
+Search stays fresh on its own: every time you save a snapshot or pull my updates, the search rebuilds
+itself automatically. You never have to think about it.
+
+To send your changes to me, for now just text me the file. Down the road we can set you up to share
+back directly if you want.
 
 ## Staying in sync with me
 
