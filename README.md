@@ -30,15 +30,29 @@ clarity-compass-book/
 ├── CLAUDE.md                       ← auto-loaded by Claude Code (you don't touch this)
 │
 ├── book/                           ← the book itself, one clean file per chapter (edit these)
-│   ├── 00-entrepreneur-guide.md        Teaser / front matter
-│   ├── 01-three-lenses.md              How the challenges show up across three contexts
-│   ├── 02-north-identity.md            NORTH: Identity
-│   ├── 03-east-action.md               EAST: Action
-│   ├── 04-south-values.md              SOUTH: Values
-│   ├── 05-west-reflection.md           WEST: Reflection & Recalibration
-│   ├── 06-magnetic-north-forces.md     MAGNETIC NORTH: the forces that pull you off course
-│   ├── 07-application.md               Applying the compass
-│   └── 08-appendix.md                  Appendix
+│   ├── 00-foreword.md                  Foreword
+│   ├── 01-abandon-ship.md              1. Abandon Ship
+│   ├── 02-the-wrong-north.md           2. The Wrong North
+│   ├── 03-the-battle-for-identity.md   3. The Battle for Identity
+│   ├── 04-becoming.md                  4. Becoming
+│   ├── 05-right-action.md              5. Right Action
+│   ├── 06-the-capacity-dividend.md     6. The Capacity Dividend
+│   ├── 07-seeing-further.md            7. Seeing Further
+│   ├── 08-...values-and-preferences.md 8. The Difference Between Values and Preferences
+│   ├── 09-values-as-architecture.md    9. Values as Architecture
+│   ├── 10-when-values-are-tested.md    10. When Values Are Tested
+│   ├── 11-look-and-live.md             11. Look and Live
+│   ├── 12-the-recalibration.md         12. The Recalibration
+│   ├── 13-the-invisible-pull.md        13. The Invisible Pull
+│   ├── 14-knowing-your-...ability.md   14. Knowing Your Specific Vulnerability
+│   ├── 15-speed-drift-...compass.md    15. Speed, Drift, and the Modern Compass
+│   ├── 16-the-gap-the-gulf-...gain.md  16. The Gap, the Gulf, and the Gain
+│   ├── 17-the-lighthouse.md            17. The Lighthouse
+│   ├── 18-appendix.md                  Appendix: How Humans Learned to Find Their Way
+│   └── 19-about-the-authors.md         About the Authors
+│
+├── audio/                          ← Kokoro narration of the chapters (local, free to make)
+├── source-material/                ← the exact .docx / .pdf files Merrill sent, by date
 │
 ├── clarity-compass-FULL-BOOK.md    ← all chapters in one file (upload THIS in the simple path)
 │
@@ -55,7 +69,7 @@ clarity-compass-book/
 │   ├── graph.json                      powers /graph search in Claude Code
 │   └── GRAPH_REPORT.md                 the same map in plain language
 │
-├── tools/                          ← local search engine (keyword + optional semantic)
+├── tools/                          ← local search, docx/pdf converters, book builder, narrator
 ├── setup.sh                        ← one-time setup the Claude Code app runs for you
 └── .claude/commands/              ← the /find, /graph, /board, /editor, /update commands
 ```

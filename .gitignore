@@ -10,3 +10,7 @@ tools/*.sqlite
 
 # OS noise
 .DS_Store
+
+# Generated audiobook renders (regenerate with tools/narrate.py, they are large)
+audio/*.m4a
+audio/*.wav

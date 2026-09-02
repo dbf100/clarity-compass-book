@@ -14,7 +14,11 @@ the simple slash commands below.
 - `book/` — the manuscript, one clean markdown file per chapter (this is the source of truth, edit these)
 - `clarity-compass-FULL-BOOK.md` — every chapter in one file
 - `editorial-board/` — five expert-editor prompts you can become on request
-- `graphify-out/` — a knowledge graph of every concept in the book and how they connect
+- `graphify-out/` — a knowledge graph of the concepts in the book. **STALE as of 2026-09-02:**
+  it was built from the June 9-part compass manuscript and still cites chapters that no longer
+  exist. Do not cite it until it has been refreshed. Offer to refresh it.
+- `source-material/` — the original .docx / .pdf files Merrill sent, kept by date
+- `audio/` — Kokoro narration of chapters (`tools/narrate.py`, local and free)
 - `tools/` — local search (keyword + optional semantic)
 
 You have the entire book available. When asked about a topic, read across all chapters, not just one.
@@ -38,6 +42,7 @@ You have the entire book available. When asked about a topic, read across all ch
 - `/editor <name>` — run one editor: developmental, structural, narrative, line, or reader.
 - `/find <words>` — fast keyword search of the book.
 - `/graph <question>` — answer using the knowledge graph (shows how ideas connect, with chapters).
+  **Currently stale** (June structure). Say so before answering from it.
 - `/save` — save a snapshot of the current work (a commit), explained in plain language.
 - `/update` — pull Brody's latest version of the book and rebuild the search index.
 - `/polish` — the FINAL publish-ready cleanup pass. Gated: confirm the book is content-complete
