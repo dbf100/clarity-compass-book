@@ -1,12 +1,14 @@
 ---
 title: Abandon Ship
 chapter: 1
-source_file: Clarity_Compass_Chapter_One_Revised_Draft_Sept_1_2026.docx
-source_date: 2026-09-01
+source_file: The_Clarity_Compass_Complete_Print_Ready_Sept_2_2026.docx
+source_date: 2026-09-03
 ---
 
 > **Part: North** — Who You Are Before Any of It Begins
-
+>
+> Finding the direction.
+>
 > Not who circumstance has made you. Not who success is convincing you to be. Who you are choosing to become—and what remains when the destination changes.
 >
 > Chapters One through Four build the reference point every other direction depends on: identity before execution, pressure, praise, failure, or success.

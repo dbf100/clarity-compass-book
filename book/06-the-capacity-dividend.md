@@ -1,8 +1,8 @@
 ---
 title: The Capacity Dividend
 chapter: 6
-source_file: Clarity_Compass_Chapter_Six_Revised_Draft_Sept_1_2026.docx
-source_date: 2026-09-01
+source_file: The_Clarity_Compass_Complete_Print_Ready_Sept_2_2026.docx
+source_date: 2026-09-03
 ---
 
 # Chapter 6. The Capacity Dividend
@@ -213,9 +213,7 @@ That is where Chapter Seven begins.
 
 The dream may grow. The work may accelerate. But the person remains North.
 
-Source note: Leonard Hussey's banjo is held by Royal Museums Greenwich. Research discussed in this chapter includes Sheldon and Elliot's self-concordance model (1999); Daphna Oyserman's identity-based motivation work; Barbara Fredrickson's broaden-and-build research on positive emotion; and Weinstein and colleagues' research on group singing, social bonding, positive affect, and pain threshold (2016). The Capacity Dividend and its three returns are the authors' formulation, not a formal construct established by those studies.
-
-T A K E   T H E   R E A D I N G
+## Take the Reading
 
 Do not ask first how much more you can build. Ask whether what you are building serves the person you have chosen to become.
 
@@ -234,3 +232,7 @@ Multiply capacity: What relationship, system, practice, or source of morale coul
 Reinvest the dividend: Where should that greater capacity go so it strengthens becoming rather than merely enlarging output?
 
 Feed the person. Protect North. Let everything worthy be built from there.
+
+## Sources and Notes
+
+1. Leonard Hussey's banjo is held by Royal Museums Greenwich. Research discussed in this chapter includes Sheldon and Elliot's self-concordance model (1999); Daphna Oyserman's identity-based motivation work; Barbara Fredrickson's broaden-and-build research on positive emotion; and Weinstein and colleagues' research on group singing, social bonding, positive affect, and pain threshold (2016). The Capacity Dividend and its three returns are the authors' formulation, not a formal construct established by those studies.

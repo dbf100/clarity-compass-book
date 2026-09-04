@@ -1,11 +1,11 @@
 ---
-title: About The Authors
+title: About the Authors
 chapter: null
-source_file: The_Clarity_Compass_COMPLETE_UPDATED_Aug31_2026.pdf
-source_date: 2026-08-31
+source_file: The_Clarity_Compass_Complete_Print_Ready_Sept_2_2026.docx
+source_date: 2026-09-03
 ---
 
-# About The Authors
+# About the Authors
 
 Merrill Fausett and Brody Fausett come to The Clarity Compass from different generations and different instincts about possibility, risk, security, and growth, but from a deeply shared foundation: people matter more than the things people build, and what we build is at its best when it serves who we are becoming and the people entrusted to our lives.
 
@@ -15,9 +15,7 @@ Merrill Fausett has spent much of his life working with people - in education, b
 
 Across those settings, one conviction has remained remarkably consistent: circumstances, income, title, address, background, success, and failure may shape a person's experience, but they do not determine a person's worth. Merrill has long been drawn to helping people see possibility in themselves and to the question of how growth and achievement can strengthen a life without allowing the person, the relationships, or the values underneath that life to become secondary to what is being pursued.
 
-His own approach to growth was also shaped by the generation and family from which he came. His father began with very little and built greater stability for the family that followed. Merrill absorbed from that experience a strong appreciation for security - for protecting what has
-
-been built, caring for the people who depend on you, and being cautious about risking something meaningful for something merely attractive.
+His own approach to growth was also shaped by the generation and family from which he came. His father began with very little and built greater stability for the family that followed. Merrill absorbed from that experience a strong appreciation for security - for protecting what has been built, caring for the people who depend on you, and being cautious about risking something meaningful for something merely attractive.
 
 That instinct brought wisdom. It also created a question he would come to understand more fully over time: when is security protecting what matters, and when might it quietly be keeping us from what is possible?
 
@@ -29,9 +27,7 @@ Brody Fausett
 
 Brody Fausett brings a complementary instinct to the same work. An entrepreneur, investor, educator, and founder of Dreaming Bigger Faster, he has spent much of his adult life challenging people to see beyond the limits of what feels immediately safe or familiar and to turn possibility into deliberate action.
 
-Where Merrill's instinct has often been to protect what has already been built, Brody has been more inclined to ask
-
-what else might be built from it. His approach is not a rejection of security, values, family, or grounding. Those foundations matter deeply to him. Rather, he has learned to see calculated risk, leverage, systems, and decisive action as tools that can expand what a person is capable of creating and contributing.
+Where Merrill's instinct has often been to protect what has already been built, Brody has been more inclined to ask what else might be built from it. His approach is not a rejection of security, values, family, or grounding. Those foundations matter deeply to him. Rather, he has learned to see calculated risk, leverage, systems, and decisive action as tools that can expand what a person is capable of creating and contributing.
 
 That perspective has given him a practical interest in the distance between intention and execution: why some dreams remain ideas while others become lives, businesses, opportunities, and impact. His work has centered on helping people think bigger, move with greater purpose, and build the structures that make meaningful growth possible.
 

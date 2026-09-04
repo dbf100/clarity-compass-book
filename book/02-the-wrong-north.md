@@ -1,8 +1,8 @@
 ---
 title: The Wrong North
 chapter: 2
-source_file: Clarity_Compass_Chapter_Two_Revised_Draft_Sept_1_2026.docx
-source_date: 2026-09-01
+source_file: The_Clarity_Compass_Complete_Print_Ready_Sept_2_2026.docx
+source_date: 2026-09-03
 ---
 
 # Chapter 2. The Wrong North

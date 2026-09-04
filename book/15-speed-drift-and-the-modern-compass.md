@@ -1,12 +1,14 @@
 ---
 title: Speed, Drift, and the Modern Compass
 chapter: 15
-source_file: Clarity_Compass_Chapter_Fifteen_Revised_Draft_Sept_2_2026.docx
-source_date: 2026-09-02
+source_file: The_Clarity_Compass_Complete_Print_Ready_Sept_2_2026.docx
+source_date: 2026-09-03
 ---
 
 > **Part: Application** — Living the Compass
-
+>
+> Carrying it at speed, under measurement, and everywhere that matters.
+>
 > The framework is complete. The final movement of the book asks what happens when the Compass is carried into the speed, measurement, relationships, and responsibility of an actual life.
 
 # Chapter 15. Speed, Drift, and the Modern Compass
@@ -29,8 +31,6 @@ Speed can shorten the distance between imagination and contribution. It can help
 
 Acceleration does not choose direction. It only gives the direction more consequence.
 
-Source note: NASA's Artemis II mission coverage records the April 10, 2026 return of Orion and its four-person crew after a nearly ten-day lunar mission. NASA's reentry updates describe the capsule reaching Earth's atmosphere at approximately 35 times the speed of sound. The crew named the spacecraft Integrity to represent trust, respect, candor, humility, and the integrated work required to bring them home.
-
 A Plan Changed by Better Information
 
 The path Integrity followed home was not simply the path NASA had first expected to use.
@@ -44,8 +44,6 @@ Bringing the crew home was never defined by loyalty to one trajectory. The traje
 This is an essential distinction in a fast world. Conviction is not stubborn attachment to a method. Alignment is the ability to keep purpose governing the method—even when the method must change quickly.
 
 A compass does not promise that your first route will remain open. It allows you to change routes without losing yourself.
-
-Source note: NASA's investigation of the Artemis I heat shield identified the cause of the unexpected char loss and led to operational changes for Artemis II. NASA reported that the modified, more direct entry trajectory shortened the distance from atmospheric entry to splashdown and limited exposure to the temperature range associated with the Artemis I behavior.
 
 ---
 
@@ -166,7 +164,7 @@ Not rigidity. Not slowness for its own sake. Not suspicion of new tools or fear 
 
 You do not need to fear speed. You need a compass that can survive it.
 
-T A K E   T H E   R E A D I N G
+## Take the Reading
 
 Do not audit your entire life. Choose one area in which speed, scale, access, or opportunity has recently increased.
 
@@ -194,3 +192,9 @@ We need to distinguish the Gap, the Gulf, and the Gain.
 
 Speed can take you farther. Only an honest reading can tell you whether farther is forward.
 Build boldly. Land honorably.
+
+## Sources and Notes
+
+1. NASA's Artemis II mission coverage records the April 10, 2026 return of Orion and its four-person crew after a nearly ten-day lunar mission. NASA's reentry updates describe the capsule reaching Earth's atmosphere at approximately 35 times the speed of sound. The crew named the spacecraft Integrity to represent trust, respect, candor, humility, and the integrated work required to bring them home.
+
+2. NASA's investigation of the Artemis I heat shield identified the cause of the unexpected char loss and led to operational changes for Artemis II. NASA reported that the modified, more direct entry trajectory shortened the distance from atmospheric entry to splashdown and limited exposure to the temperature range associated with the Artemis I behavior.

@@ -30,7 +30,8 @@ clarity-compass-book/
 ├── CLAUDE.md                       ← auto-loaded by Claude Code (you don't touch this)
 │
 ├── book/                           ← the book itself, one clean file per chapter (edit these)
-│   ├── 00-foreword.md                  Foreword
+│   ├── front-matter.md                 Title page, copyright, contents
+│   ├── foreword.md                     Foreword
 │   ├── 01-abandon-ship.md              1. Abandon Ship
 │   ├── 02-the-wrong-north.md           2. The Wrong North
 │   ├── 03-the-battle-for-identity.md   3. The Battle for Identity
@@ -48,8 +49,8 @@ clarity-compass-book/
 │   ├── 15-speed-drift-...compass.md    15. Speed, Drift, and the Modern Compass
 │   ├── 16-the-gap-the-gulf-...gain.md  16. The Gap, the Gulf, and the Gain
 │   ├── 17-the-lighthouse.md            17. The Lighthouse
-│   ├── 18-appendix.md                  Appendix: How Humans Learned to Find Their Way
-│   └── 19-about-the-authors.md         About the Authors
+│   ├── appendix.md                     Appendix: The Distance Between Readings
+│   └── about-the-authors.md            About the Authors
 │
 ├── audio/                          ← Kokoro narration of the chapters (local, free to make)
 ├── source-material/                ← the exact .docx / .pdf files Merrill sent, by date

@@ -48,3 +48,26 @@
 - **The knowledge graph in `graphify-out/` is STALE** and still describes the June structure.
   Refreshing it needs an AI pass over the text (`/graphify --update`), so it is flagged rather
   than silently left looking current.
+
+## 2026-09-03: Merrill's print-ready complete replaces everything
+
+- He folded his loose Sept 1 and Sept 2 chapter revisions back into one
+  **print-ready complete manuscript** and sent it as both .docx and .pdf.
+  It is now the base, and `OVERRIDES` in `build_book.py` is empty again.
+- **The book grew from ~31.8k to ~41.4k words.** New in this version: a title
+  page, copyright, and full contents; a **WEST part divider** (the one part
+  that was missing before); a **"Take the Reading"** exercise closing 14
+  chapters (renamed from "Your Compass"); a **"Sources and Notes"** section on
+  13 chapters; and bridge paragraphs that hand each chapter off to the next.
+- Subtitle changed to **"Discovering You, Before Success, Failure or Someone
+  Else Does."** The appendix was rewritten and retitled **"The Distance
+  Between Readings"** (861 words to 2,261).
+- Verified the complete really does contain his later loose revisions before
+  dropping them: chapter 1 still opens "The sound came before the meaning"
+  (his Sept 1 rewrite) and chapter 15 still opens on the Orion reentry (Sept 2).
+- Confirmed the .docx and the .pdf carry identical text (the only differences
+  are running headers and contents pagination), so the build now reads the
+  .docx and `pdf2md.py` is kept only as a fallback for PDF-only sends.
+- `book/` renamed its unnumbered sections to `front-matter.md`, `foreword.md`,
+  `appendix.md`, `about-the-authors.md` so file number still equals chapter
+  number. Search index rebuilt: 21 files, 69 searchable sections.

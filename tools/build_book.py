@@ -1,28 +1,28 @@
 #!/usr/bin/env python3
 """build_book.py — assemble book/ and the FULL-BOOK file from Merrill's sends.
 
-Provenance model: the newest complete manuscript is the base, and any chapter
-Merrill has revised SINCE that complete send overrides it. Every output file
-records which source file and send date it came from, so a later revision can
-be dropped in without guessing what is current.
+Provenance model: the newest COMPLETE manuscript is the base, and any chapter
+he revised AFTER that complete send overrides it (the OVERRIDES dict). When he
+folds his loose chapter revisions back into a new complete, OVERRIDES empties
+out again. Every output file records the source file and send date it came
+from, so nothing has to be guessed later.
 
-Usage: python3 tools/build_book.py
+Usage: python3 tools/build_book.py [--force]
 """
 import os
 import re
-import sys
 import shutil
 import subprocess
+import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
-import pdf2md
 import docx2md
 
 SRC = os.path.join(ROOT, "source-material")
-BASE_PDF = os.path.join(SRC, "2026-08-31-complete",
-                        "The_Clarity_Compass_COMPLETE_UPDATED_Aug31_2026.pdf")
-BASE_DATE = "2026-08-31"
+BASE_DOCX = os.path.join(SRC, "2026-09-03-print-ready",
+                         "The_Clarity_Compass_Complete_Print_Ready_Sept_2_2026.docx")
+BASE_DATE = "2026-09-03"
 REV_DIR = os.path.join(SRC, "2026-09-chapter-revisions")
 
 WORDS = ["ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE",
@@ -30,14 +30,30 @@ WORDS = ["ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE",
          "SIXTEEN", "SEVENTEEN"]
 NUM = {w: i + 1 for i, w in enumerate(WORDS)}
 
-# Chapter revisions Merrill sent after the base complete manuscript.
-OVERRIDES = {
-    1:  ("Clarity_Compass_Chapter_One_Revised_Draft_Sept_1_2026.docx", "2026-09-01"),
-    2:  ("Clarity_Compass_Chapter_Two_Revised_Draft_Sept_1_2026.docx", "2026-09-01"),
-    3:  ("Clarity_Compass_Chapter_Three_Revised_Draft_Sept_1_2026.docx", "2026-09-01"),
-    6:  ("Clarity_Compass_Chapter_Six_Revised_Draft_Sept_1_2026.docx", "2026-09-01"),
-    15: ("Clarity_Compass_Chapter_Fifteen_Revised_Draft_Sept_2_2026.docx", "2026-09-02"),
-}
+PARTS = ("NORTH", "EAST", "SOUTH", "WEST", "MAGNETIC NORTH", "APPLICATION")
+# Repeating in-chapter sections. They become H2 inside the chapter they close.
+SUBSECTIONS = ("TAKE THE READING", "SOURCES AND NOTES")
+
+# Chapter revisions Merrill has sent SINCE the base complete manuscript.
+# Empty right now: his Sept 1 and Sept 2 loose chapters are already folded into
+# the Sept 2 print-ready complete (verified against the chapter openings).
+OVERRIDES = {}
+
+
+def despace(s):
+    """'C H A P T E R   O N E' -> 'CHAPTER ONE'. Word letterspaces its headings."""
+    if re.fullmatch(r'(?:[A-Z]\s+)+[A-Z]', s):
+        # Two-or-more spaces separate words; single spaces separate letters.
+        return re.sub(r'\s{2,}', '\x00', s).replace(' ', '').replace('\x00', ' ')
+    return s
+
+
+def nice(caps):
+    """'SOURCES AND NOTES' -> 'Sources and Notes' (small words stay lowercase)."""
+    small = {"and", "the", "of", "a", "in", "for", "to"}
+    words = caps.lower().split()
+    return " ".join(w if i and w in small else w.capitalize()
+                    for i, w in enumerate(words))
 
 
 def slug(title):
@@ -46,54 +62,76 @@ def slug(title):
 
 
 def split_base():
-    """Return ordered [(kind, num, title, body)] from the complete manuscript."""
-    md = pdf2md.convert(BASE_PDF)
-    parts = re.split(r"^# (.+)$", md, flags=re.M)[1:]
-    sections, pending_divider = [], None
-    for head, body in zip(parts[0::2], parts[1::2]):
-        body = body.strip()
-        if head == "YOUR COMPASS":
-            if sections:                       # end-of-part exercise
-                sections[-1][3] += "\n\n## Your Compass\n\n" + body
+    """Return ordered section dicts from the complete manuscript."""
+    paras = [p.strip() for p in docx2md.convert(BASE_DOCX).split("\n\n") if p.strip()]
+    sections, cur, pending_part = [], None, None
+
+    def start(kind, num, title):
+        nonlocal cur, pending_part
+        cur = {"kind": kind, "num": num, "title": title, "body": [],
+               "part": pending_part}
+        pending_part = None
+        sections.append(cur)
+
+    start("front", None, "Front Matter")
+    for raw in paras:
+        p = despace(raw)
+        m = re.fullmatch(r'CHAPTER (\w+)', p)
+        if m and m.group(1) in NUM:
+            start("chapter", NUM[m.group(1)], None)
             continue
-        if head in pdf2md.PARTS:               # part-divider page
-            sub = [l.strip() for l in body.split("\n") if l.strip() and l.strip() != "---"]
-            pending_divider = (head, sub[0] if sub else "", "\n\n".join(sub[1:]))
+        if p in PARTS:
+            pending_part = [p, "", []]
             continue
-        m = re.match(r"CHAPTER (\w+)$", head)
-        if m:
-            n = NUM[m.group(1)]
-            tm = re.match(r"## (.+?)\n", body + "\n")
-            title = tm.group(1).strip() if tm else f"Chapter {n}"
-            body = body[tm.end():].strip() if tm else body
-            sections.append(["chapter", n, title, body, pending_divider])
-            pending_divider = None
-        else:
-            title = head.title() if head.isupper() else head
-            sections.append(["front" if not sections else "back", None, title, body, None])
+        if p == "FOREWORD":
+            start("front", None, "Foreword")
+            continue
+        if p == "APPENDIX":
+            start("back", None, "Appendix")
+            continue
+        if p == "ABOUT THE AUTHORS":
+            start("back", None, "About the Authors")
+            continue
+        if p in SUBSECTIONS:
+            cur["body"].append("## " + nice(p))
+            continue
+        if pending_part is not None:          # still on the part-divider page
+            if p == "⊕":
+                continue
+            if not pending_part[1]:
+                pending_part[1] = p
+            else:
+                pending_part[2].append(p)
+            continue
+        if cur["kind"] == "chapter" and cur["title"] is None:
+            cur["title"] = p                  # first line after CHAPTER N is the title
+            continue
+        if p == "⊕" or re.fullmatch(r'[—\-\*\s]{3,}', p):
+            cur["body"].append("---")
+            continue
+        cur["body"].append(p)
     return sections
 
 
 def load_override(path):
-    """Chapter docx -> (title, body). Word spells the header C H A P T E R  O N E."""
-    md = docx2md.convert(path)
-    lines = [l for l in md.split("\n")]
-    out, title = [], None
-    for line in lines:
-        s = line.strip()
-        if not s:
-            if title is not None:
-                out.append("")
-            continue
-        if re.fullmatch(r"(?:C\s*H\s*A\s*P\s*T\s*E\s*R)\s+[A-Z\s]+", s):
+    """Chapter docx -> (title, body)."""
+    paras = [p.strip() for p in docx2md.convert(path).split("\n\n") if p.strip()]
+    title, out = None, []
+    for raw in paras:
+        p = despace(raw)
+        if re.fullmatch(r'CHAPTER \w+', p):
             continue
         if title is None:
-            title = s.lstrip("# ").strip()
+            title = p.lstrip("# ").strip()
             continue
-        out.append(line)
-    body = re.sub(r"\n{3,}", "\n\n", "\n".join(out)).strip()
-    body = re.sub(r"^\*\s+\*\s+\*$", "---", body, flags=re.M)
-    return title, body
+        if p in SUBSECTIONS:
+            out.append("## " + nice(p))
+            continue
+        if re.fullmatch(r'[\*—\-\s]{3,}', p):
+            out.append("---")
+            continue
+        out.append(p)
+    return title, "\n\n".join(out)
 
 
 def main():
@@ -109,40 +147,35 @@ def main():
         shutil.rmtree(book)
     os.makedirs(book)
 
-    sections = split_base()
-    files, idx = [], 0
-    for kind, n, title, body, divider in sections:
-        source, sdate = os.path.basename(BASE_PDF), BASE_DATE
-        if kind == "chapter" and n in OVERRIDES:
+    files = []
+    for sec in split_base():
+        title, n = sec["title"], sec["num"]
+        body = "\n\n".join(sec["body"]).strip()
+        source, sdate = os.path.basename(BASE_DOCX), BASE_DATE
+        if sec["kind"] == "chapter" and n in OVERRIDES:
             fname, sdate = OVERRIDES[n]
             title, body = load_override(os.path.join(REV_DIR, fname))
             source = fname
-        name = f"{idx:02d}-{slug(title)}.md"
-        heading = f"Chapter {n}. {title}" if kind == "chapter" else title
-        fm = ["---",
-              f"title: {title}",
-              f"chapter: {n if n else 'null'}",
-              f"source_file: {source}",
-              f"source_date: {sdate}",
-              "---", ""]
-        if divider:
-            pname, sub, intro = divider
-            fm.append(f"> **Part: {pname.title()}** — {sub}\n" if sub
-                      else f"> **Part: {pname.title()}**\n")
-            if intro:
-                fm.append("> " + intro.replace("\n\n", "\n>\n> ") + "\n")
+        if sec["kind"] == "chapter":
+            name, heading = f"{n:02d}-{slug(title)}.md", f"Chapter {n}. {title}"
+        else:
+            name, heading = f"{slug(title)}.md", title
+        fm = ["---", f"title: {title}", f"chapter: {n if n else 'null'}",
+              f"source_file: {source}", f"source_date: {sdate}", "---", ""]
+        if sec["part"]:
+            pname, sub, intro = sec["part"]
+            fm.append(f"> **Part: {pname.title()}**" + (f" — {sub}" if sub else ""))
+            for para in intro:
+                fm.append(">\n> " + para)
+            fm.append("")
         front = "\n".join(fm).rstrip() + "\n\n"
         open(os.path.join(book, name), "w").write(front + f"# {heading}\n\n{body}\n")
         files.append((name, heading, body))
-        idx += 1
 
-    full = ["# The Clarity Compass",
-            "",
-            "Merrill Fausett and Brody Fausett",
-            "",
-            f"Assembled from Merrill's sends. Base manuscript {BASE_DATE}; "
-            f"chapters {', '.join(str(k) for k in sorted(OVERRIDES))} replaced by his "
-            "later per-chapter revisions.",
+    full = ["# The Clarity Compass", "", "Merrill Fausett and Brody Fausett", "",
+            f"Assembled from Merrill's sends. Base manuscript {BASE_DATE}"
+            + (f"; chapters {', '.join(str(k) for k in sorted(OVERRIDES))} replaced by "
+               "his later per-chapter revisions." if OVERRIDES else "."),
             "", "---", ""]
     for name, heading, body in files:
         full.append(f"# {heading}\n\n{body}\n\n---\n")
@@ -150,7 +183,7 @@ def main():
 
     total = sum(len(b.split()) for _, _, b in files)
     print(f"{len(files)} files, {total:,} words")
-    for name, heading, body in files:
+    for name, _, body in files:
         print(f"  {name:52s} {len(body.split()):6,} words")
 
 

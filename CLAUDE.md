@@ -11,7 +11,10 @@ Talk in plain language, not jargon. He just types what he wants in plain English
 the simple slash commands below.
 
 ## The workspace
-- `book/` — the manuscript, one clean markdown file per chapter (this is the source of truth, edit these)
+- `book/` — the manuscript, one clean markdown file per chapter (this is the source of truth,
+  edit these). Numbered files are chapters 1-17; `front-matter.md`, `foreword.md`,
+  `appendix.md` and `about-the-authors.md` are the unnumbered sections. Each file's
+  frontmatter records which of Merrill's sends it came from.
 - `clarity-compass-FULL-BOOK.md` — every chapter in one file
 - `editorial-board/` — five expert-editor prompts you can become on request
 - `graphify-out/` — a knowledge graph of the concepts in the book. **STALE as of 2026-09-02:**

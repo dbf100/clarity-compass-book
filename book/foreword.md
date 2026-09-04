@@ -1,8 +1,8 @@
 ---
 title: Foreword
 chapter: null
-source_file: The_Clarity_Compass_COMPLETE_UPDATED_Aug31_2026.pdf
-source_date: 2026-08-31
+source_file: The_Clarity_Compass_Complete_Print_Ready_Sept_2_2026.docx
+source_date: 2026-09-03
 ---
 
 # Foreword
@@ -97,4 +97,8 @@ The Clarity Compass asks us to hold both truths at once.
 
 Dream bigger. Build boldly. Become more.
 
-Just know your True North before you do.— Merrill and Brody Fausett
+Just know your True North before you do.
+
+— Merrill and Brody Fausett
+
+---
